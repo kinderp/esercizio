@@ -29,12 +29,19 @@ Common mostly used data structure to represent a graph are:
 * [adjacency matrix](https://it.wikipedia.org/wiki/Matrice_delle_adiacenze)
 * [adjacency list](https://it.wikipedia.org/wiki/Lista_di_adiacenza)
 
-In terms of **memory ocupation** the first (a.m.) is preferible when the most of the nodes are connected each other, 
-when the number of links are big. otherwise, the second (a.l.) is used when the graph is sparse.
+In terms of **memory ocupation** the first (a.m.) is preferible when the most of the nodes are connected each other, in other terms when the number of links are big. Otherwise, the second (a.l.) is used when the graph is sparse.
 
-In term of *elaboration time* a.l. have a O(V + E) complexity otherwise a.m. O(V*V). 
+In term of **elaboration time** a.l. have a O(V + E) complexity otherwise a.m. O(V*V). 
 
 With :
 
 1. `V = n. of nodes`
 2. `E = n of links`
+
+So even in this case, a.m. is preferible when E is very big and it is important have a costant responding time at the question "Does exist a link from A to B?".
+
+For our problem we have preferred adjacency list because even in a big house (an hotel??) is unlikely that the rooms (V) are dense connected to each other and so E ~ V. So our assumptions are V=E and in term of elaboration time O(V+V) < O(V*V).
+For the same reason even for memory occupation consideration adjacency lists could be preferred, but we do not think the dimension of our mjson map could be a problem.
+
+
+
