@@ -48,6 +48,7 @@ For the same reason even for memory occupation consideration adjacency lists cou
 # Implementation
 
 # Usage
+ :exclamation: Please insert below command in the root dir of the project you have cloned
 
 ### Help
 
