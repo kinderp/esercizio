@@ -47,6 +47,9 @@ For the same reason even for memory occupation consideration adjacency lists cou
 
 # Implementation
 
+![alt text](immagini/grafo.png "Mappa")
+
+
 # Usage
  :exclamation: Please insert below command in the root dir of the project you have cloned
 
