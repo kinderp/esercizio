@@ -64,14 +64,24 @@ optional arguments:
   -o OBJECTS [OBJECTS ...]
 
 ```
+### Build
 
+We have nothing to build in python so scripts/build.sh is used to build docker image
+
+```
+/scripts/build.sh 
+```
 ### Run
+
+Find your route
 
 ```
 docker run --name mytest -v $(pwd):/mnt -w /mnt mytest ./scripts/run.sh -f map.json -i 1 -o Pillow,Knife,"Potted Plant"
 ```
 
 ### Test
+
+Some test
 
 ```
 docker run --name mytest_pytest -v $(pwd):/mnt -w /mnt mytest ./scripts/tests.sh
