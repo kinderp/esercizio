@@ -49,7 +49,55 @@ For the same reason even for memory occupation consideration adjacency lists cou
 
 ![alt text](immagini/grafo.png "Mappa")
 
+* datatype.Room is a room :)
+* datatype.Route is a hop (room visitted + direction) in a completed route. So a completed route is a list of Route istances
+* datatype.Router is the builder of the completed route. It implements dfs.
+* datatype.Map is an implementation of a adjacency matrix. Is an array of lists: each elem in the array represent a room and link to a list taht holds all the neighbosr of that room 
+* datatype.Node is an element into an adjacency matrix. It is composed by a link to a Room and the direction.
+* hashrooms is a simple Dict that holds all the Room istances created from json file. The Node instances (in a Map instance) holds Room pointing to this data memory.
+```
+├── datatype
+│   ├── __init__.py
+│   ├── map.py
+│   ├── node.py
+│   ├── room.py
+│   ├── route.py
+│   └── router.py
+├── Dockerfile
+├── immagini
+│   └── grafo.png
+├── main.py
+├── map.json
+├── parser
+│   ├── __init__.py
+│   └── parser.py
+├── README.md
+├── requirements.txt
+├── route
+│   ├── __init__.py
+│   └── router.py
+├── scripts
+│   ├── build.sh
+│   ├── run.sh
+│   └── tests.sh
+└── test
+    ├── datasource
+    │   └── map.json
+    ├── datatype
+    │   ├── test_map.py
+    │   ├── test_node.py
+    │   ├── test_room.py
+    │   └── test_route.py
+    └── parser
+        └── test_parser.py
 
+```
+The graph in json format is parsed by parser
+
+module.file.class | Description
+------------ | -------------
+parser.parser.py.Parser | parsing json and creation map and hashroom data structure
+Content in the first column | Content in the second column
 # Usage
  :exclamation: Please insert below command in the root dir of the project you have cloned
 
