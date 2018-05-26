@@ -22,6 +22,12 @@ Briefly it consist in two simple steps:
 # Limitations
 The graph must be connected to react every node 
 
-# Data structure
+# Data structures
 
+Common mostly used data structure to represent a graph are:
 
+* [adjacency matrix](https://it.wikipedia.org/wiki/Matrice_delle_adiacenze)
+* [adjacency list](https://it.wikipedia.org/wiki/Lista_di_adiacenza)
+
+In terms of memory ocupation the first (a.m.) is preferible when the most of the nodes are connected each other, 
+when the number of link are big. otherwise, the second (a.l.) is used when the graph is sparse.
