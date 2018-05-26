@@ -1,0 +1,6 @@
+datatype/*.pyc
+parser/*.pyc
+test/datatype/__pycache__/*
+test/parser/__pycache__/*
+.cache/*
+.pytest_cache/*
