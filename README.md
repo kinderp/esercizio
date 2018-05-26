@@ -20,6 +20,29 @@ Briefly it consist in two simple steps:
 1. visit a node
 2. visit (recursively) all connected nodes (that have not been visited yet) to the one at point 1 
 
+Below our implementation
+
+```python
+    def traverse(self,root):
+        objects_found = root.find_objects(self.objects_to_find)
+
+        index = root.get_id()
+        self.visited[index-1] = 1
+
+        r = Route(root,objects_found)
+        self.route.append(r)
+
+        #print("visiting node {} ... found {}".format(index, r.get_objects_found()))
+        for node in self.my_map.get_neighbors(index):
+            node_index = node.get_room().get_id()
+            if self.visited[node_index-1]:
+                continue
+            else:
+                self.traverse(node.get_room())
+            r_back = Route(root, [])
+            self.route.append(r_back)
+```
+
 # Limitations
 The graph must be connected to reach every node 
 
@@ -52,7 +75,7 @@ For the same reason even for memory occupation consideration adjacency lists cou
 * datatype.Room is a room :)
 * datatype.Route is a hop (room visitted + direction) in a completed route. So a completed route is a list of Route istances
 * datatype.Router is the builder of the completed route. It implements dfs.
-* datatype.Map is an implementation of a adjacency matrix. Is an array of lists: each elem in the array represent a room and link to a list taht holds all the neighbosr of that room 
+* datatype.Map is an implementation of a adjacency list. Is an array of lists: each elem in the array represent a room and link to a list taht holds all the neighbosr of that room 
 * datatype.Node is an element into an adjacency matrix. It is composed by a link to a Room and the direction.
 * hashrooms is a simple Dict that holds all the Room istances created from json file. The Node instances (in a Map instance) holds Room pointing to this data memory.
 ```
@@ -92,12 +115,33 @@ For the same reason even for memory occupation consideration adjacency lists cou
         └── test_parser.py
 
 ```
-The graph in json format is parsed by parser
+The graph in json format is parsed by Parser instance. It returns a raw_map (dict loaded from json) and hash_rooms (dict of Room istances created from json data).
+Using hash_rooms and raw_map an adjacency list is created (Map istance) it holds all the information about every neighbors of all nodes, so it holds information about topology of our map.
+With a Map instance, hash_rooms and a list of objects to find a Router is able to find a possible route usin dsf.
+Finally the result are printed
 
-module.file.class | Description
------------- | -------------
-parser.parser.py.Parser | parsing json and creation map and hashroom data structure
-Content in the first column | Content in the second column
+
+```python
+def parsing(filename):
+    p = Parser(filename)
+    p.parse()
+    hash_rooms = p.get_hash_rooms()
+    raw_map = p.get_raw_map()
+    return (raw_map, hash_rooms)
+
+def main(filename,id_root,object_to_find):
+
+    raw_map, hash_rooms = parsing(filename)
+    import pdb
+    pdb.set_trace()
+    my_map = Map(raw_map, hash_rooms)
+    root = hash_rooms[id_root]
+    router = Router(root, my_map, object_to_find)
+    router.get_route()
+
+```
+
+
 # Usage
  :exclamation: Please insert below command in the root dir of the project you have cloned
 
