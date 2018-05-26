@@ -8,6 +8,7 @@ Given:
 3. a list of objects to collect
 
 Find:
+
 * a possible path to collect all objects given at point 3 in all rooms, starting as root from room at point 2
 
 # Solution
@@ -44,4 +45,36 @@ For our problem we have preferred adjacency list because even in a big house (an
 For the same reason even for memory occupation consideration adjacency lists could be preferred, but we do not think the dimension of our mjson map could be a problem.
 
 
+# Implementation
+
+# Usage
+
+### Help
+
+```
+docker run -v $(pwd):/mnt -w /mnt mytest 
+usage: main.py [-h] [-f FILENAME] [-i ROOT] [-o OBJECTS [OBJECTS ...]]
+
+find a route from a root!
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -f FILENAME           your map (json format)
+  -i ROOT               your root room id
+  -o OBJECTS [OBJECTS ...]
+
+```
+
+### Run
+
+```
+docker run --name mytest -v $(pwd):/mnt -w /mnt mytest ./scripts/run.sh -f map.json -i 1 -o Pillow,Knife,"Potted Plant"
+```
+
+### Test
+
+```
+docker run --name mytest_pytest -v $(pwd):/mnt -w /mnt mytest ./scripts/tests.sh
+
+```
 
