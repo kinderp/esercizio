@@ -20,7 +20,7 @@ Briefly it consist in two simple steps:
 2. visit (recursively) all connected nodes (that have not been visited yet) to the one at point 1 
 
 # Limitations
-The graph must be connected to react every node 
+The graph must be connected to reach every node 
 
 # Data structures
 
@@ -29,5 +29,12 @@ Common mostly used data structure to represent a graph are:
 * [adjacency matrix](https://it.wikipedia.org/wiki/Matrice_delle_adiacenze)
 * [adjacency list](https://it.wikipedia.org/wiki/Lista_di_adiacenza)
 
-In terms of memory ocupation the first (a.m.) is preferible when the most of the nodes are connected each other, 
-when the number of link are big. otherwise, the second (a.l.) is used when the graph is sparse.
+In terms of **memory ocupation** the first (a.m.) is preferible when the most of the nodes are connected each other, 
+when the number of links are big. otherwise, the second (a.l.) is used when the graph is sparse.
+
+In term of *elaboration time* a.l. have a O(V + E) complexity otherwise a.m. O(V*V). 
+
+With :
+
+1. `V = n. of nodes`
+2. `E = n of links`
