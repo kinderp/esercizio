@@ -62,7 +62,7 @@ With :
 1. `V = n. of nodes`
 2. `E = n of links`
 
-So even in this case, a.m. is preferible when E is very big and it is important have a costant responding time at the question "Does exist a link from A to B?".
+So even in this case, a.m. is preferible when E is very big and it is important have a costant responding time at the question "Does a link from A to B exist ?".
 
 For our problem we have preferred adjacency lists because, according to us, even in a big house is unlikely that the rooms (V) are dense connected to each other and so E ~ V. So our assumptions are V=E and in term of elaboration time O(V+V) < O(V*V).
 For the same reason even for memory occupation consideration adjacency lists could be preferred, but we do not think the dimension of our map could be a problem.
