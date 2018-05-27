@@ -13,13 +13,12 @@ Find:
 
 # Solution
 
-Our problem can be easily catgorized into a common graph traversal case; 
+Our problem can be easily categorized into a common graph traversal case; 
 in particular our solution is a (non performant) implementation of a dfs [(depth first searching)](https://it.wikipedia.org/wiki/Ricerca_in_profondit%C3%A0).
 Briefly it consist in two simple steps:
 
 1. visit a node
-2. visit (recursively) all connected nodes (that have not been visited yet) to the one at point 1 
-
+2. visit (recursively) all connected nodes to the one at point 1 (but that have not been visited yet) 
 Below our implementation
 
 ```python
