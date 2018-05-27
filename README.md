@@ -2,12 +2,12 @@
 find a route from a root
 
 # Problem
-Given:
+**Given**:
 1. a map of connected rooms that have inside them a series of objects
 2. a starting room
 3. a list of objects to collect
 
-Find:
+**Find**:
 
 * a possible path to collect all objects given at point 3 in all rooms, starting as root from room at point 2
 
