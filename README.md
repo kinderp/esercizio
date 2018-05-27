@@ -43,16 +43,16 @@ Below our implementation
 ```
 
 # Limitations
-The graph must be connected to reach every node 
+The graph must be connected to reach every node, but have you ever seen a room without a door? For our problem, it should be not a problem.
 
 # Data structures
 
-Common mostly used data structure to represent a graph are:
+Common mostly used data structures to represent a graph are:
 
 * [adjacency matrix](https://it.wikipedia.org/wiki/Matrice_delle_adiacenze)
 * [adjacency list](https://it.wikipedia.org/wiki/Lista_di_adiacenza)
 
-In terms of **memory ocupation** the first (a.m.) is preferible when the most of the nodes are connected each other, in other terms when the number of links are big. Otherwise, the second (a.l.) is used when the graph is sparse.
+In terms of **memory ocupation** the first (a.m.) is preferible when the most of the nodes are connected to each other, in other terms when the number of links are big. Otherwise, the second (a.l.) is used when the graph is sparse (many nodes but not so much links).
 
 In term of **elaboration time** a.l. have a O(V + E) complexity otherwise a.m. O(V*V). 
 
@@ -63,8 +63,8 @@ With :
 
 So even in this case, a.m. is preferible when E is very big and it is important have a costant responding time at the question "Does exist a link from A to B?".
 
-For our problem we have preferred adjacency list because even in a big house (an hotel??) is unlikely that the rooms (V) are dense connected to each other and so E ~ V. So our assumptions are V=E and in term of elaboration time O(V+V) < O(V*V).
-For the same reason even for memory occupation consideration adjacency lists could be preferred, but we do not think the dimension of our mjson map could be a problem.
+For our problem we have preferred adjacency lists because, according to us, even in a big house is unlikely that the rooms (V) are dense connected to each other and so E ~ V. So our assumptions are V=E and in term of elaboration time O(V+V) < O(V*V).
+For the same reason even for memory occupation consideration adjacency lists could be preferred, but we do not think the dimension of our map could be a problem.
 
 
 # Implementation
@@ -72,11 +72,12 @@ For the same reason even for memory occupation consideration adjacency lists cou
 ![alt text](immagini/grafo.png "Mappa")
 
 * datatype.Room is a room :)
-* datatype.Route is a hop (room visitted + direction) in a completed route. So a completed route is a list of Route istances
+* datatype.Route is a hop (room visited + direction) in a completed route. So a completed route is a list of Route instances
 * datatype.Router is the builder of the completed route. It implements dfs.
-* datatype.Map is an implementation of a adjacency list. Is an array of lists: each elem in the array represent a room and link to a list taht holds all the neighbosr of that room 
-* datatype.Node is an element into an adjacency matrix. It is composed by a link to a Room and the direction.
-* hashrooms is a simple Dict that holds all the Room istances created from json file. The Node instances (in a Map instance) holds Room pointing to this data memory.
+* datatype.Map is an implementation of a adjacency list. It is a dict of lists: each key in the dict represents an id room and points to a list that holds all the neighbors of that room (that are represented in memory as Node instances, see below). 
+* datatype.Node is an element into an adjacency matrix. It is composed by a memory link to a Room and the direction.
+* hashrooms is a simple Dict that holds all the memory links to Room instances created by parsing process. So it is serves as a db to build Map and Node instances.
+
 ```
 ├── datatype
 │   ├── __init__.py
@@ -114,11 +115,12 @@ For the same reason even for memory occupation consideration adjacency lists cou
         └── test_parser.py
 
 ```
-The graph in json format is parsed by Parser instance. It returns a raw_map (dict loaded from json) and hash_rooms (dict of Room istances created from json data).
-Using hash_rooms and raw_map an adjacency list is created (Map istance) it holds all the information about every neighbors of all nodes, so it holds information about topology of our map.
-With a Map instance, hash_rooms and a list of objects to find a Router is able to find a possible route usin dsf.
-Finally the result are printed
+The graph, in json format, is parsed by Parser instance. It returns a raw_map (dict loaded from json) and hash_rooms (dict of Room instances created from json data).
+Using hash_rooms and raw_map an adjacency list is created (Map instance). it holds all the information about every neighbors of all nodes, so it holds information about topology of our map.
+With a Map instance, hash_rooms and a list of objects to find a Router is able to find a possible route using dsf.
+Finally the results are retrieved and printed.
 
+See below code for details:
 
 ```python
 def parsing(filename):
@@ -142,7 +144,7 @@ def main(filename,id_root,object_to_find):
 
 
 # Usage
- :exclamation: Please insert below command in the root dir of the project you have cloned
+ :exclamation: Please insert below command in the root dir of the project that you have cloned
 
 ### Help
 
