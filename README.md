@@ -19,6 +19,7 @@ Briefly it consist in two simple steps:
 
 1. visit a node
 2. visit (recursively) all connected nodes to the one at point 1 (but that have not been visited yet) 
+
 Below our implementation
 
 ```python
