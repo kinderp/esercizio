@@ -44,7 +44,7 @@ Below our implementation
 ```
 
 # Limitations
-The graph must be connected to reach every node, but have you ever seen a room without a door? For our problem, it should be not a problem.
+The graph must be connected to reach every nodes, but have you ever seen a room without a door? For our problem, it should be not a problem.
 
 # Data structures
 
