@@ -77,7 +77,7 @@ For the same reason even for memory occupation consideration adjacency lists cou
 * datatype.Router is the builder of the completed route. It implements dfs.
 * datatype.Map is an implementation of a adjacency list. It is a dict of lists: each key in the dict represents an id room and points to a list that holds all the neighbors of that room (that are represented in memory as Node instances, see below). 
 * datatype.Node is an element into an adjacency matrix. It is composed by a memory link to a Room and the direction.
-* hashrooms is a simple Dict that holds all the memory links to Room instances created by parsing process. So it is serves as a db to build Map and Node instances.
+* hashrooms is a simple Dict that holds all the memory links to Room instances created by parsing process. So it serves as a db to build Map and Node instances.
 
 ```
 ├── datatype
